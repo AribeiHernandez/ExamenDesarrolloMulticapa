@@ -5,7 +5,9 @@
  */
 package Controlador;
 import Vista.VistaVentana;
-import com.sun.imageio.plugins.jpeg.JPEG;
+import Modelo.Imagen;
+import Controlador.ControladorImagen;
+//import com.sun.imageio.plugins.jpeg.JPEG;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
@@ -13,12 +15,15 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+
 /**
  *
  * @author ilsea
  */
 public class ControladorVistaVentana implements MouseListener{
-    private VistaVentana VistaVentana;//no es el original 
+    private VistaVentana VistaVentana;//no es el original
+    private Imagen Imagen;
+	private ControladorImagen ControladorImagen; 
 
     public ControladorVistaVentana(VistaVentana VistaVentana) {
         this.VistaVentana = VistaVentana;
@@ -48,6 +53,15 @@ public class ControladorVistaVentana implements MouseListener{
                } catch (IOException ex) {
                    System.out.println(e);               }
            }
+           else if(e.getSource()== VistaVentana.BtnSTART) {
+        	   String Modo = VistaVentana.ComboBox.getSelectedItem().toString();
+        	   try {
+				this.ControladorImagen = new ControladorImagen(this.VistaVentana, this.Imagen, this.Imagen.getAncho(), this.Imagen.getAlto(), Modo);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+           }
     }
 
     @Override
@@ -70,10 +84,18 @@ public class ControladorVistaVentana implements MouseListener{
         
         JFileChooser jf= new JFileChooser();
         jf.showOpenDialog(VistaVentana);
-        File archivo= jf.getSelectedFile();
-        if(archivo!= null)
+        
+
+    	File archivo= jf.getSelectedFile();
+    	this.Imagen = new Imagen(archivo);	
+    	if(this.Imagen.esImagen == true)
         {
-        VistaVentana.NombreIMG.setText(archivo.getName());
+        	VistaVentana.NombreIMG.setText(archivo.getName());
+        	VistaVentana.BtnSTART.setEnabled(true);
+        }
+        if(this.Imagen.esImagen == false){
+        	VistaVentana.BtnSTART.setEnabled(false);
+        	VistaVentana.NombreIMG.setText("---------------------------");
         }
         
         
