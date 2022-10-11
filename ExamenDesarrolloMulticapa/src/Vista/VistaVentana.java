@@ -13,6 +13,7 @@ import java.awt.Frame;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Font;
 import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -42,6 +43,8 @@ public class VistaVentana extends JFrame
            public  JLabel IMG3 = new JLabel("IMG3");
            public  JLabel IMG4 = new JLabel("IMG4");
            public  JLabel NombreIMG = new JLabel("---------------------------");
+           public  JLabel LblTIEMPO = new JLabel("TIEMPO");
+           public  JLabel LblValorTIEMPO = new JLabel("00:00");
            
            //Combo box 
            public JComboBox ComboBox= new JComboBox();
@@ -61,7 +64,7 @@ public class VistaVentana extends JFrame
        
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);//Ponemos en alerta al destructor para que 
         //revise cuando yo le de click a la x y valla a destruir la ventana 
-        this.setSize(600,400);
+        this.setSize(890,500);
         //this.setLocation(300,200);//indica donde aparece en la pantalla
         this.setLocationRelativeTo(null);//coloca al jframe al centro
         this.setTitle("INTERFACE CONTADORA");
@@ -94,26 +97,35 @@ public class VistaVentana extends JFrame
          //Labels 
         Lbl1.setBounds(190, 10, 300, 40);
         this.add(Lbl1);
+        LblTIEMPO.setBounds(590, 10, 300, 40);
+        this.add(LblTIEMPO);
         NombreIMG.setBounds(230, 80, 300, 40);
         NombreIMG.setForeground(Color.white);
         this.add(NombreIMG);
+        
+        LblValorTIEMPO.setBounds(550, 80, 200, 100);
+        LblValorTIEMPO.setForeground(Color.white);
+        Font fuente = new Font("Calibri", 3, 60);
+        LblValorTIEMPO.setFont(fuente); 
+        
+        this.add(LblValorTIEMPO);
         //lbl img
-        IMG1.setBounds(10, 240, 100, 100);
+        IMG1.setBounds(10, 240, 200, 200);
         IMG1.setBackground(Color.WHITE);
         IMG1.setOpaque(true);
         this.add(IMG1);
         
-        IMG2.setBounds(170, 240, 100, 100);
+        IMG2.setBounds(230, 240, 200, 200);
         IMG2.setBackground(Color.WHITE);
         IMG2.setOpaque(true);
         this.add(IMG2);
         
-        IMG3.setBounds(340, 240, 100, 100);
+        IMG3.setBounds(450, 240, 200, 200);
         IMG3.setBackground(Color.WHITE);
         IMG3.setOpaque(true);
         this.add(IMG3);
         
-        IMG4.setBounds(500, 240, 100, 100);
+        IMG4.setBounds(670, 240, 200, 200);
         IMG4.setBackground(Color.WHITE);
         IMG4.setOpaque(true);
         this.add(IMG4);

@@ -43,6 +43,7 @@ public class ControladorImagen {
 			VistaVentana.IMG4.setIcon(Algoritmo4.getIcon());
 
 			System.out.println("El tiempo en milisegundos fue de: " + endTime);
+                        VistaVentana.LblValorTIEMPO.setText(String.valueOf( endTime));
 			
 			
 		}
